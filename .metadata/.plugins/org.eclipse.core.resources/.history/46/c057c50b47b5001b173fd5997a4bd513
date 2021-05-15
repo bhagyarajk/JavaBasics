@@ -1,0 +1,5 @@
+package com.keepitsimple.interfaces.tightcoupling;
+
+public interface ImplementationClass implements Interface1 {
+
+}

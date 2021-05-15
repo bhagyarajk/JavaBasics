@@ -1,0 +1,11 @@
+package com.keepitsimple.java;
+
+public class StaticAndNonStatic {
+public static void main(String[] args) {
+	System.out.println("Within the main method ...");
+	
+	Let me explain about the modifiers 
+	1. 
+	
+}
+}

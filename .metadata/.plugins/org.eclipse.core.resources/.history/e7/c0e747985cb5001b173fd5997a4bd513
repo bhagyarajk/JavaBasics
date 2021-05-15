@@ -1,0 +1,9 @@
+package com.keepitsimple.typecasting;
+
+public class UpcastingAndDowncasting {
+
+}
+
+class SubClassOfUpcastingAndDownCasting {
+
+}

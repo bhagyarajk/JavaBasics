@@ -1,0 +1,19 @@
+package com.keepitsimple.typecasting;
+
+public class NarrowingAndWidening {
+	public static void main(String[] args) {
+		byte a = 10;
+		short b = 10;
+		int c = 10;
+		long d = 10l;
+		float e = 10.02f;
+		double f = 10.05;
+
+		// Implicit widening
+		c = a;
+
+		// narrowing
+		a = (byte) c;
+
+	}
+}

@@ -1,0 +1,12 @@
+package com.keepitsimple.abstraction;
+
+public abstract class AbstractClassDemo {
+	
+	Methods without the body are called abstract methods 
+	
+	public abstract void display();
+
+	public static void hello () {
+		
+	}
+}

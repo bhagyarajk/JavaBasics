@@ -1,0 +1,8 @@
+package com.keepitsimple.java;
+
+public class ManyClassesInoneFile {
+	public static void main(String[] args) {
+		System.out.println("here we will learn something new ...");
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.keepitsimple.typecasting;
+
+public class NarrowingAndWidening {
+public static void main(String[] args) {
+	
+}
+}

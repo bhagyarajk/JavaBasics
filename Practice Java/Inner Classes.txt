@@ -1,0 +1,350 @@
+Inner classes
+----------------
+Introduced in 1.1v, when they are fixing some bugs with awt (event handlers )
+
+imp : without the existance of one type of object, there is no chance of existance of another type of object --> for these kind of req inner classes are imp
+
+ex.
+1. class University {
+		class Department {
+		}
+}
+without the existance of the university object department object should not exists : so dept declared as the inner class of university
+
+2. class Car {
+	class Engine {
+	
+	}
+}
+
+without the car object Engine object should not exists
+
+3. Java Api example
+
+interface Map {
+	interface Entry {
+	}
+}
+
+Entry : single record of key and value together called an entry, without the map object entry object should not exists
+
+Note 1: without existing the outer class object there is no chance of existing the inner class object 
+
+Note 2: There is no IS-A relation, this is Has-A relation (composition or aggregation )
+
+--------------------------------------------------------------
+
+Types of Inner classes : 
+
+Based on position of declaration and behavior of the inner class they are devided into 4 types
+
+1. Normal/Regular Inner classes
+2. Method local inner classes  --> inside the method 
+3. Anonymous/nameless inner classes
+4. Static nested classes --> its not the inner class its like inner class 
+
+1. Normal/Regular inner classes : All the inner classes apart from the other classes
+
+class Outer {
+	class Inner {
+		
+	}
+}
+
+Compilation 
+-------------
+javac Outer.java
+files after that 
+-----------------
+Outer.class -> for outer class
+Outer$Inner.class --> for inner class
+
+
+
+
+2. Inside inner class we cant declare any of the static members (why becoz without the existance of outer class object inner class object should not exists), hence we cant declare main method and hence we cant run the inner class directly from the command prompt
+class Outer {
+	class Inner {
+		main method // this will give the compile time error : inner classes cannot have static declarations 
+	}
+}
+
+case 1 : Accessing inner class code from static area of outer class
+
+
+ class Outer {
+	class Inner {
+		public void m1() {
+		
+		}
+	}
+	
+	main() {
+		// to call m1 method we need Inner class object is required but without existing the outer class object inner class object cant exists so we need to create the outer class object first 
+		
+		// step - 1. Create the Outer class object 
+		Outer outer = new Outer();
+		// step-2. using the outer class object we need to create the inner class object 
+		Outer.Inner inner = outer.new Inner();
+		inner.m1();
+		
+		// Let me just make the syntax smaller 
+		
+		Outer.Inner inner = new Outer.new Inner();
+	}
+}
+
+
+case 2 : Accessing inner class code from instance area of the outer class 
+
+class Outer {
+
+	class Inner {
+	
+	// Instance method of Inner class 
+			public void m1 () {
+			sout("Inside the m1()");
+			}
+	}
+	
+	// static method of outer class 
+	public static void main(String [] args) {
+	
+		Outer outer = new Outer();
+		outer.m2();
+		
+	
+	}
+	
+	// Instance method of the outer class 
+	public void m2() {
+	 // from here we need to call the inner class m1 method
+	 // We entered into this m2 only after creating the object of Outer class so no need to create the object
+		Inner inner = new Inner();
+		inner.m1();
+	 
+	 
+		
+	}
+}
+
+case 3 : Accessing the inner class code from outside of the outer class 
+
+class Outer {
+	class Inner {
+		public void m1() {
+			sout("Inside of m1()")
+		}
+	}
+}
+class Test {
+	public static void main(String [] args) {
+	
+	// create the object of the outer class 
+	
+	Outer outer = new Outer();
+	Outer.Inner inner = outer.new Inner();
+	inner.m1()
+	
+	} 
+}
+
+
+conclusion : 
+-------------------
+
+1. Accessing the inner class code from the outerclass static area or Accessing the inner class code from outside of the outer class 
+------------------------------------------------------------------------------------------------------------------------------------
+
+Outer outer = new Outer();
+Outer.Inner inner = outer.new Inner();
+
+2. From instance area of outer class 
+-----------------------------------------
+
+Inner inner = new Inner();
+
+
+Note : for outer : public, default, final, abrast, strictfp
+inner :public, default, final, abrast, strictfp, private, protected, static (as they are the member of another class )
+
+Note: nesting of inner classes is allowed (any number of )
+
+--
+Method LocalInnerclasses:  most rarely used 
+-------------------------------------------------
+
+Insde the method you need to declare another class : 
+class Test {
+	public void m1() {
+	
+	// what to do if you want to declare a method inside a method, we can declare the class inside the method
+	// lets say we need sum functionality but we need that functionality only within m1()
+	
+	class Inner {
+	
+	public void sum(int x) {
+	
+	
+	}
+	
+	
+	
+	}
+	Inner inner = new Inner();
+	inner.sum(20);
+	inner.sum(30);
+	
+	
+	}
+
+}
+
+
+Anonymous/nameless inner classes 
+---------------------------------------
+1. These are used when some functionality needed for one time, or for instant use, we can run the show there only 
+2. Based on the position and behavior anonymous innner classes have been devided into 
+
+a. Anonymous inner class which extends another class
+b. Anonymous inner class which implements another interface
+c. Anonymous inner class which can be used as the parameter for the method 
+
+1. Anonymous inner class which extends another class 
+---------------------------------------------------------
+
+
+class A {
+	public void display() {
+	sout("insde the class A display method ");
+	}
+}
+
+class B {
+mainmethod() {
+
+// Anonymous inner class def 
+A a = new A() {
+// you can override any methods here 
+public void display() {
+sout("inside the anonymous class display");
+}
+};
+
+}
+
+}
+
+conclusion : imp : In above anonymous class declaration three things are happening 
+
+1. A class without name which extends A or the child class of A is defined, with --> {};
+2. Even though new A() statement  seem like the object of A, but its not --> its the object of the child class of A (ie. which is the object of the anonymous child class defined )
+3. We are using the refference of A ie. parent class refference to reffer the child class object, so we are not able to access the child specific methods (but we can access the over ridden methods as they are not child specific)
+
+Note : After the compilation there are three classes you can find out : 1. A.class 2. B.class 3. B$1.class (anonymous class file )
+2. Anonymous class which implements Interface 
+-------------------------------------------------------
+
+interface Hello {
+
+}
+class Util {
+
+// Anonymous class which implements Hello interface, here we are creating the object of the implementation class not the interface and refference used to reffer the object is the interface refference
+
+	Hello hello = new Hello() {
+	
+	// Implementation of the methods in the Hello interface
+	
+	};
+}
+
+1. Anonymous class which implements the interface is been created, and inside that the methods of the interface implemented 
+2. Object of that anonymous class created which is reffered by the interface refference, so as usual methods specific to anonymous class cant be accessed using that refference 
+
+Note : 
+1. A normal class can implement more than one interface but one anonymous class can only implement one interface
+2. Anonymous class cannot conatain the constructors as there is no name for them 
+
+3. Anonymous class which is used as the parameter for methods --> this is nothing new the same anonymous classes are passed as the method parameters
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.keepitsimple.java;
+
+// this will show how the anonymous class can be passed as an argument 
+public class AnonymousClassArguments {
+	public static void main(String[] args) {
+		new Thread(new Runnable() {
+			// Implementation of the run method which is there in Runnable interface
+			// Job of the thread
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 5; i++) {
+					System.out.println("child thread ..");
+					System.out.println(Thread.currentThread().getName());
+
+				}
+
+			}
+		}
+
+		).start();
+
+		for (int i = 0; i < 5; i++) {
+			System.out.println("main thread ..");
+			System.out.println(Thread.currentThread().getName());
+		}
+	}
+
+}
+
+
+Static Nested class
+-----------------------------------------------------------------------
+1. why the name static nested : becoz we know that we can call any class as an inner class only when the inner class object does not exists if outer class object is not existing 
+but in this case the inner class is static, so during the class loading only the inner class object/ inner class exists even when there is no outer class object existing, it means there is no strong association that's the reason why we call this type of the inner class as the static nested class not the inner class 
+
+
+2. As the inner class is static, we can have static methods inside it unlike the other nested classes 
+3. we can even have the main method inside the inner class 
+4. As the inner class can contain the main method : it can directly be executed from the command prompt 
+
+ex. 
+package com.keepitsimple.java;
+
+package com.keepitsimple.java;
+
+public class StaticNestedClass {
+	int x;
+
+	static class Inner {
+		public static void main(String[] args) {
+			System.out.println("from inside the main method of the Inner class ");
+
+		}
+
+		public void display() {
+
+			System.out.println("inside the display method of the static inner class");
+			// compile time error : cant make a static refference to the non-static
+			// refference
+			// System.out.println(x);
+
+			// to solve it ...
+			StaticNestedClass s = new StaticNestedClass();
+			System.out.println(s.x);
+		}
+	}
+}
+
+class OneMore {
+	public static void main(String[] args) {
+		StaticNestedClass.Inner inner = new StaticNestedClass.Inner();
+		inner.display();
+	}
+
+}
+
+
+Note : even from the non-static method inside the static nested class without creating the object you cant access the non-static refferences 

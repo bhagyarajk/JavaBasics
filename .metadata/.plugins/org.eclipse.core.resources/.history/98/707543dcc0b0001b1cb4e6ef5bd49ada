@@ -1,0 +1,46 @@
+package com.keepitsimple.java;
+
+public class StaticAndNonStatic {
+
+	static int a;
+	int b;
+	SecondClass second;
+
+	public static void main(String[] args) {
+		System.out.println("Within the main method ...");
+
+		/*
+		 * Let me explain about the modifiers 1. Access 2. Non-access Modifiers 1.
+		 * Access -> Private (Only within the class), Protected (Only within the package
+		 * provoided classes should have IS-A) Default (Only within the package No need
+		 * of IS-A), Public (Anywhere) 2. Non-access -> Static, Synchronized, Transient,
+		 * Abstract, Volatile, Final, Native etc.. Note : All of these are key words and
+		 * should be used with the lowercase just for the explaination I have written in
+		 * a proper english way
+		 */
+
+		/*
+		 * Static : Any thing which belongs to an entire class Non-static : which is
+		 * specific to the specific object Both static and Nonstatic variables always
+		 * contain the default values if they are not assigned with any ex. for String
+		 * null, for integer 0 etc..
+		 */
+
+		System.out.println("the value of a is : " + StaticAndNonStatic.a);
+		// To access the non static variables we need to create an object of the class
+		StaticAndNonStatic sns = new StaticAndNonStatic();
+		System.out.println("the value of b is : " + sns.b);
+		// Even this will contain the null value 
+		System.out.println("the value for the refference type member secondclass is : " + sns.second);
+
+	}
+}
+
+class SecondClass {
+	int x;
+	int y;
+
+	void display() {
+		System.out.println("Display method of SecondClass is been called ...");
+	}
+}

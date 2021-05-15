@@ -1,0 +1,6 @@
+1. Abstract class allows both static and non-static members inside it
+2. While providing the implementations for the methods you must have to either retain the vissibility or you need to increase it, but you cant dicrease it 
+ex. A Default method cant be overriden as the private, it can be overriden as public or protected
+3. Abstract class can't be final 
+4. Abstract and static will never exists together, abstract method can't be static and vice versa
+5. Abstract class cant be instantiated, but

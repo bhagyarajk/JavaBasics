@@ -1,0 +1,6 @@
+package com.keepitsimple.java;
+
+// this will show how the anonymous class can be passed as an argument 
+public class AnonymousClassArguments {
+
+}

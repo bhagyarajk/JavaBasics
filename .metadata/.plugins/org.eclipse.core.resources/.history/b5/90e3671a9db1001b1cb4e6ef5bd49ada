@@ -1,0 +1,13 @@
+package com.keepitsimple.java;
+
+public class BlocksAndConstructors {
+//Let me define the static block 
+
+	static {
+		System.out.println("executing the static block...");
+	}
+
+	{
+		System.out.println("executing the non-static block ...");
+	}
+}

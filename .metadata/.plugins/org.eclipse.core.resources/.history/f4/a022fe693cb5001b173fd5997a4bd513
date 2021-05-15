@@ -1,0 +1,7 @@
+package com.keepitsimple.abstraction;
+
+public abstract class AbstractClassDemo {
+	public abstract void display();
+
+	public abstract void hello();
+}

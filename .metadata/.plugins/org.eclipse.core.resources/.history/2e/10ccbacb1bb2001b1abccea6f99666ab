@@ -1,0 +1,7 @@
+package com.keepitsimple.java;
+
+public class ThisAndSuperKeyword {
+	int a;
+	int b;
+
+}

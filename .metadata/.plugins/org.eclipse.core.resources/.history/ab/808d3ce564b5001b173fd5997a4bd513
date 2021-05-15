@@ -1,0 +1,23 @@
+1. While overriding either you can increase the visibility or else keep it same, but you cant dicrease the visibility 
+2. We can override the concrete method as abstract in the subclass
+3. Final methods will be inherited but cant be overriden 
+a. final var : cant be re-assigned b. method : cant be overriden c. class : cant be inherited from 
+4. Static methods cant be over-riden as non-static and vice versa
+5. Static methods cant be over-riden, its called the method hiding as there is no dynamic polymorphism involved the process is not called as overriding instead we call that as method hiding 
+6. Method return type : 
+a. For primitive  : there should not be any change in the written type of the over ridden method 
+b. For Non-primitive : Covarient allowed, but contra varient not allowed
+means from Object --> String you can change but from String --> object not possible 
+7. with throws keyword : a. if the parent class method does not contain the throws keyword then the overridden method cant contain the throws keyword
+if the parent class method contains the throws keyword then the child class overriden method you can either define or not define the throws keyword, and this rule is applicable for checked exceptions
+and 
+b. In the child class overriden method you can give the same exception or the subclass of the exception in the parent method
+
+Polymorphism : Object (methods) showing different forms in different life cycles
+Real life example : A person can be father, Son and Employee at the same time 
+Polymorpshims allows a same person to work differently or to work on the same thing in different ways
+
+Overloading : Static polymorphism -> the methods will perform some tasks in different manner 
+Here the method call to the method has been resolved during the compile time only 
+
+overriding : Dynamic polymorphism -> the same method will behave differently 

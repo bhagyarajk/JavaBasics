@@ -1,0 +1,2 @@
+1. Interface can extends from more than one interface -> there is no ambiguity for methods and constructor chaining hence the multiple inheritance is allowed
+2. 

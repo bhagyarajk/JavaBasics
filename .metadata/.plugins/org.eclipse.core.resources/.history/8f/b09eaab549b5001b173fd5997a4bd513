@@ -1,0 +1,8 @@
+package com.keepitsimple.generalization;
+
+public class NameAndSound {
+
+	public void setNameandGetSound(Animal animal) {
+		
+	}
+}

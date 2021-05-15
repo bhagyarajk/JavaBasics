@@ -1,0 +1,22 @@
+package com.keepitsimple.java;
+
+public class ConstrutctorcallingAndChaining {
+	public static void main(String[] args) {
+		
+	}
+}
+class Test {
+	int a;
+	double b;
+	float c;
+	String String;
+	public Test(int a, double b, float c, java.lang.String string) {
+		super();
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		String = string;
+	}
+	
+	
+}

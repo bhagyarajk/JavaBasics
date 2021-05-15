@@ -1,0 +1,12 @@
+package com.keepitsimple.java;
+
+public class OuterClass {
+	public static void main(String[] args) {
+		
+	}
+	class InnerClass {
+		
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.keepitsimple.dynamicpolymorphism;
+
+// The code should contain Loose coupling, Generalization and overriding together
+public class DynamicPolymorphism {
+
+}
+
+class Test {
+	pubic void display() {
+		System.out.println("display method of the parent class");
+	}
+}

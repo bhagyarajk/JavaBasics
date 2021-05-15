@@ -1,0 +1,10 @@
+package com.keepitsimple.abstraction;
+
+public abstract class AbstractClassDemo {
+
+	public static void main(String[] args) {
+		System.out.println("Main method started ..");
+	}
+}
+
+public 

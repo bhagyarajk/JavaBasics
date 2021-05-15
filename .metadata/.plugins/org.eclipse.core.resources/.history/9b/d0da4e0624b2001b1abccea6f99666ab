@@ -1,0 +1,59 @@
+package com.keepitsimple.java;
+
+import com.sun.net.httpserver.Authenticator.Success;
+
+public class ThisAndSuperKeyword extends SubClass {
+	int a;
+	int b;
+
+	public ThisAndSuperKeyword(int a, int b, int a2, int b2) {
+		super(a, b);
+		a = a2;
+		b = b2;
+	}
+
+	public void getValuesOfSuperclass() {
+		System.out.println(super.a);
+		System.out.println(super.b);
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Main method started ...");
+		ThisAndSuperKeyword ts = new ThisAndSuperKeyword(10, 20, 30, 40);
+		SuperClass SuperClass = new SuperClass(20, 30);
+		System.out.println("The value of a : " + ts.a);
+		System.out.println("The value of b : " + ts.b);
+
+		ts.getValuesOfSuperclass();
+
+	}
+}
+
+class SuperClass {
+
+	int a;
+	int b;
+
+	public SuperClass(int a, int b) {
+		super();
+		// this keyword always holds the address of the currently executing object
+		// or the object on which the current method is been invoked
+		// when we have both the non-static and the local variables with the same name
+		// inorder to distinguish them we will use this keyword
+		this.a = a;
+		this.b = b;
+	}
+
+	public void display() {
+
+		System.out.println("executing display method of the non-static method ");
+		System.out.println(this.a);
+	}
+
+	public static void demo() {
+		System.out.println("executing demo method of the static method ..");
+		// this can only be used inside the constructor or the non-static method
+		// System.out.println(this.a);
+	}
+
+}

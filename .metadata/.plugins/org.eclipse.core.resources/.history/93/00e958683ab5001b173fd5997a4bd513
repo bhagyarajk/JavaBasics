@@ -1,0 +1,21 @@
+package com.keepitsimple.java;
+
+public class EncapsulationClass {
+	public static void main(String[] args) {
+		System.out.println("Main method started ..");
+	}
+}
+
+class User {
+	private String username;
+	private String password;
+
+	public void setUserName(String username) {
+		this.username = username;
+	}
+
+	public void setPassword() {
+		this.password = password;
+	}
+
+}
