@@ -1,0 +1,5 @@
+package com.keepitsimple.cloning;
+
+public class ShallowCloningDemo {
+
+}

@@ -1,0 +1,14 @@
+package com.keepitsimple.cloning;
+
+public class ShallowCloningDemo {
+
+}
+class Demo1 {
+	int a;
+	int b;
+}
+class Demo2 {
+	int x;
+	int y;
+	
+}

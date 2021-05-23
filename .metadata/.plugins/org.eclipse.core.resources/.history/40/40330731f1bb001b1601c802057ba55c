@@ -1,0 +1,7 @@
+package com.java.ThreadDemo;
+
+public class CreateThreadByThreadClass {
+	public static void main(String[] args) {
+
+	}
+}

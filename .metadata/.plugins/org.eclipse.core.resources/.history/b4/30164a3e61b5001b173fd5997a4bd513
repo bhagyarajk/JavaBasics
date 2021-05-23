@@ -1,6 +1,0 @@
-1. While overriding either you can increase the visibility or else keep it same, but you cant dicrease the visibility 
-2. We can override the concrete method as abstract in the subclass
-3. Final methods will be inherited but cant be overriden 
-a. final var : cant be re-assigned b. method : cant be overriden c. class : cant be inherited from 
-4. Static methods cant be over-riden as non-static and vice versa
-5. 

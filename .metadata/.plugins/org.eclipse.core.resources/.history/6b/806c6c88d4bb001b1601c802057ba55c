@@ -1,0 +1,35 @@
+package com.keepitsimple.cloning;
+
+public class ShallowCloningDemo {
+	public static void main(String[] args) {
+		Demo1 demo1 = new Demo1();
+		demo1.a = 10;
+		demo1.b = 20;
+		demo1.demo2.x = 100;
+		demo1.demo2.y = 200;
+		System.out.println(demo1);
+	}
+
+}
+
+// step 1 : In order to make the Demo1 class clonable, implement the clonable interface first 
+class Demo1 extends Demo2 implements Cloneable {
+	int a;
+	int b;
+	Demo2 demo2;
+
+	// step 2 : Override the clone method : even though the cloneable is the marker
+	// interface, within this method return the super.clone() and it's called the
+	// shallow cloning
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+
+	}
+}
+
+class Demo2 {
+	int x;
+	int y;
+
+}

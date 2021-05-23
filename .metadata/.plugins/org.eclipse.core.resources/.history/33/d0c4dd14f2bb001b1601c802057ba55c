@@ -1,0 +1,5 @@
+package com.java.ThreadDemo;
+
+public class ByImplementingRunnable {
+
+}

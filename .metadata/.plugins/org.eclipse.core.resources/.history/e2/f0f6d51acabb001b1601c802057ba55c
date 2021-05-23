@@ -1,0 +1,5 @@
+package com.keepitsimple.exceptionhandling;
+
+public class InsufficientBalenceAmout extends Exception {
+
+}

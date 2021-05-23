@@ -1,8 +1,0 @@
-package com.keepitsimple.interfaces.tightcoupling;
-
-public class UtilityClass {
-	public static void main(String[] args) {
-		System.out.println("Main method started ..");
-		ImplementationClass ic = new ImplementationClass();
-	}
-}

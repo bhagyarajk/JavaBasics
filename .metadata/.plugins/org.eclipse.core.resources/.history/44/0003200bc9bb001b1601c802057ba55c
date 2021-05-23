@@ -1,0 +1,10 @@
+package com.keepitsimple.exceptionhandling;
+
+public class BankApp {
+	float balence = 0;
+	float debitAmout = 0;
+	float creditAmout = 0;
+	
+	
+
+}

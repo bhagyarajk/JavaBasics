@@ -1,7 +1,0 @@
-package com.keepitsimple.abstraction;
-
-public class AbstractClassDemo {
-	public void display();
-
-	public static void hello();
-}

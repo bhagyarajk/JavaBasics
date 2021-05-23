@@ -1,0 +1,9 @@
+package com.keepitsimple.wrapperclass;
+
+public class WrapperClassesDemo {
+	public static void main(String[] args) {
+		System.out.println("Inside the main method of the wrapper class");
+
+	}
+
+}

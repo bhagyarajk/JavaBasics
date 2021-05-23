@@ -1,0 +1,10 @@
+package com.keepitsimple.java.languagedefaults.section3;
+
+public class ObjectClass {
+	public static void main(String[] args) {
+		System.out.println("Main method started..");
+		ObjectClass object = new ObjectClass();
+		System.out.println(		object.toString()
+);
+	}
+}

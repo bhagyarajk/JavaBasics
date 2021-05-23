@@ -1,3 +1,0 @@
-1. Abstract class allows both static and non-static members inside it
-2. While providing the implementations for the methods you must have to either retain the vissibility or you need to increase it, but you cant dicrease it 
-ex. A Default method cant be overidden as the private, it can be overriden as public or protected

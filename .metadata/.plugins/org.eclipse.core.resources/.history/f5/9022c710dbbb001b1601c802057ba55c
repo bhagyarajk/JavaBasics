@@ -1,0 +1,17 @@
+package com.keepitsimple.cloning;
+
+public class DeepCloningDemo {
+
+}
+
+class Demo1 {
+	int a;
+	int b;
+	Demo2 demo2 = new Demo2();
+
+}
+
+class Demo2 {
+	int x;
+	int y;
+}

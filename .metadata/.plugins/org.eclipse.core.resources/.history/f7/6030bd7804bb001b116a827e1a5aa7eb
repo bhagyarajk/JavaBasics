@@ -1,0 +1,7 @@
+concept of scp and heap
+--------------------------
+1. String is the only class in the entire java where you can create the objects by using new and without using new 
+2. Whenever you use the new keyword an object is created in the heap
+3. Every time you use new keyword a new object of the string in created in the heap
+4. If you create the object using the string literals then the object will be there in the string constant pool
+5. But if the object with the same content already exists in the 

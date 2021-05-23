@@ -1,0 +1,31 @@
+package com.java.ThreadDemo;
+
+/*Generally we need the props of the Thread class to be able to create the new thread for that Thread class class has many constructors 
+one accepts runnable interface object where as the other is the no-argument constructor and many other constructors exists
+We have this second way of creating threads because if the class has already extended another class then it can't extend the thread class 
+*/
+public class ByImplementingRunnable {
+	public static void main(String[] args) throws InterruptedException {
+
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 20; i++) {
+					System.out.println(Thread.currentThread().getName() + " : " + i);
+				}
+
+			}
+
+		};
+		Thread thread1 = new Thread(runnable);
+		thread1.setName("Thread-1");
+		thread1.start();
+		for (int i = 0; i < 30; i++) {
+			System.out.println(Thread.currentThread().getName() + " : " + i);
+
+		}
+	}
+
+}

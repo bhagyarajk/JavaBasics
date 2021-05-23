@@ -1,0 +1,32 @@
+package com.keepitsimple.stringclass;
+
+public class StringClass {
+	public static void main(String[] args) {
+		String string1 = "Hello world ";
+		String string2 = "Hello world ";
+
+		// Hashcode method has been overridden to gen the hashcode based on the the
+		// content of the object
+		System.out.println(string1.hashCode());
+		System.out.println(string2.hashCode());
+
+		// equals method also been overridden to gen the equals method
+		System.out.println(string1.equals(string2));
+
+		// toString() overridden to display the content of the method
+		System.out.println(string1.toCharArray());
+		System.out.println("This is my favorite font so far ....");
+
+		char[] ch = { 'a', 'p', 'p', 'l', 'e' };
+		String var1 = new String(ch);
+		System.out.println("The value of the var1 is : " + var1);
+		System.out.println(var1.charAt(0));
+		System.out.println(var1.codePointAt(0));
+
+		String var2 = "Helloooooooo";
+		String var3 = "hello";
+		// compareTo() compares two strings based on there unicode value
+		System.out.println(var2.compareTo(var3));
+	}
+
+}

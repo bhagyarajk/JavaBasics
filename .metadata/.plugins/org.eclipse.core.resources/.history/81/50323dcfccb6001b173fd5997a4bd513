@@ -1,0 +1,4 @@
+concept of scp and heap
+--------------------------
+1. String is the only class in the entire java where you can create the objects by using new and without using new 
+2. Whenever you use the new keyword an object is created 

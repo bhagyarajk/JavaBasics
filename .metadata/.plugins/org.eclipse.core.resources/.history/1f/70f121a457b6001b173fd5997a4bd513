@@ -1,0 +1,12 @@
+package com.keepitsimple.java.languagedefaults.section3;
+
+public class MobileClass {
+	String modelName;
+	int ramSize;
+
+	@Override
+	public String toString() {
+		return modelName + " " + ramSize;
+	}
+
+}

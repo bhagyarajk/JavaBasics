@@ -1,8 +1,0 @@
-package com.keepitsimple.java;
-
-public class StaticAndNonStatic {
-public static void main(String[] args) {
-	System.out.println("within the main method ...");
-	
-}
-}

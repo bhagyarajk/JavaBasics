@@ -1,5 +1,0 @@
-1. Interface can extends from more than one interface -> there is no ambiguity for methods and constructor chaining hence the multiple inheritance is allowed
-2. PASF Rule : methods are public and abstract by default inside the interface where as variables  are public, static and final
-3. Interfaces can't be instantiated 
-4. Interface also allows concrete methods 
-5. 

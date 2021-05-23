@@ -1,0 +1,14 @@
+1. toString() --> String implementation of the toString() method is used to convert any of the given object to toString()
+a. The default behavior of the toString() will return the fully qualified name with the hexadecimal hashcode
+
+Packagename.Classname@hashcode
+Usually we override this toString() method to show the content of the object 
+
+2. hashcode() --> this method will give the hashcode representation of the object
+this method will generally converts the address of an  object to an integer using some algorithm
+hashcode() method is the native method as it's impossible in java to find out the address of an object
+
+use : searching of the object using the hash of the object makes it faster to find out 
+hashcode is unique for each object so you can even compare two objects using this hashcode method 
+
+3.  

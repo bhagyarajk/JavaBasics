@@ -1,0 +1,31 @@
+package com.keepitsimple.cloning;
+
+public class DeepCloningDemo {
+	public static void main(String[] args) {
+		System.out.println("Inside the main method ...");
+		Test1 test = new Test1();
+		test.a = 10;
+		test.b = 20;
+		test.demo.x = 100;
+		test.demo.y = 200;
+
+	}
+
+}
+
+class Test1 implements Cloneable {
+	int a;
+	int b;
+	Test2 demo = new Test2();
+
+	@Override
+	public Object clone() {
+		return super.clone();
+	}
+
+}
+
+class Test2 {
+	int x;
+	int y;
+}

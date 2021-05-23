@@ -1,0 +1,23 @@
+package com.keepitsimple.cloning;
+
+public class ShallowCloningDemo {
+
+}
+
+// step 1 : In order to make the Demo1 class clonable, implement the clonable interface first 
+class Demo1 implements Cloneable {
+	int a;
+	int b;
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+
+	}
+}
+
+class Demo2 {
+	int x;
+	int y;
+
+}

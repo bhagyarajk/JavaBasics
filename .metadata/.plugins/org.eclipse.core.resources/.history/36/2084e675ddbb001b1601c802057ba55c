@@ -1,0 +1,20 @@
+package com.keepitsimple.cloning;
+
+public class DeepCloningDemo {
+	public static void main(String[] args) {
+		System.out.println("Inside the main thing ...");
+	}
+
+}
+
+class Test1 {
+	int a;
+	int b;
+	Test2 demo2 = new Test2();
+
+}
+
+class Test2 {
+	int x;
+	int y;
+}

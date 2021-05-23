@@ -1,0 +1,9 @@
+package com.keepitsimple.stringclass;
+
+public class StringClass {
+	public static void main(String[] args) {
+		String string1 = "Hello world ";
+		String string2 = "Java world "
+	}
+
+}

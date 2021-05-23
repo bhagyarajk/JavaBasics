@@ -1,0 +1,13 @@
+package com.keepitsimple.exceptionhandling;
+
+import sun.security.action.GetBooleanAction;
+
+public class BankAppUtil {
+	public static void main(String[] args) {
+		System.out.println("Main method of the Bank App started");
+		BankApp bankApp = new BankApp();
+		bankApp.creditAmout(1000);
+		System.out.println(getBalence());
+	}
+
+}

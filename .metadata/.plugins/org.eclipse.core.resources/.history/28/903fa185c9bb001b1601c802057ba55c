@@ -1,0 +1,19 @@
+package com.keepitsimple.exceptionhandling;
+
+public class BankApp {
+	float balence = 0;
+	float debitAmout = 0;
+	float creditAmout = 0;
+
+	public void creditAmout(float creditAmout) {
+		this.creditAmout = creditAmout;
+		setBalence(this.creditAmout);
+
+	}
+
+	private void setBalence(float creditAmout) {
+		balence = balence + creditAmout;
+
+	}
+
+}

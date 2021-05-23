@@ -1,0 +1,23 @@
+Exception heirarchy
+----------------------
+1. Throwable 
+2. a. Exception b. Error
+3. a. Exception --> a.checked and unchecked b. Error --> a.VirtualMachine Error b. AssertionError
+
+ Checked and Unchecked exception : 
+ Checked --> these are checked at the compile time and if the exception is of checked type then the user must have to use the throws keyword or the handle the exception, exception propogation is not implicit
+ ex. File related exceptions like FileNotFoundException, SQLException, IOExcpetion (Just remember like trying to access any resource and user is doing somethingwrong then checked exceptions will happen)
+ 
+ Unchecked --> these are the exceptions which are checked at the runtime operations, and for these the implicit propagation is possible,
+ and in c++ all the exceptions are unchecked and programer need not to bother a lot, but for the systematic way java checked excpetions must be either handled by the programmer or He/She should let the jvm to handle by mentioning the throws keyword
+ 
+ ex. ArithmaticException
+ 
+ **Our Customexceptions should be made checked or unchecked?**<br>
+ <hr>
+ If the user is able to recover from the exception then make it checked, if the end user can't do anything with the exception then make that exception as the unchecked
+ 
+**Difference between the error and exception** <br> <hr>
+Error : Serious problems that an Application should not try to catch the errors
+Exception : An appication can catch exceptions and they can at least try to handle it 
+
