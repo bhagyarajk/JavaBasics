@@ -20,4 +20,11 @@
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="com.keepitsimple.dynamicpolymorphism.DynamicPolymorphism"/>
     <fullyQualifiedTypeName name="com.keepitsimple.java.languagedefaults.section3.ObjectClass"/>
+    <fullyQualifiedTypeName name="com.keepitsimple.java.OuterClass.InnerClass"/>
+    <fullyQualifiedTypeName name="com.keepitsimple.exceptionhandling.DemoException"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.keepitsimple.exceptionhandling.BankApp"/>
+    <fullyQualifiedTypeName name="sun.security.action.GetBooleanAction"/>
+    <fullyQualifiedTypeName name="com.keepitsimple.cloning.Demo2"/>
+    <fullyQualifiedTypeName name="com.java.ThreadDemo.DemoThread"/>
 </qualifiedTypeNameHistroy>

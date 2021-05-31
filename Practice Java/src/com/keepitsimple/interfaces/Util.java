@@ -5,5 +5,7 @@ public class Util {
 		ImplementationClass ic = new ImplementationClass();
 		ic.display();
 		ic.hello();
+		System.out.println(ParentInterface1.x);
+
 	}
 }

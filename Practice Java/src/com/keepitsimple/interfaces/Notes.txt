@@ -4,6 +4,9 @@
 4. Interface also allows concrete methods 
 5. At that moment if the dev is not clear about the methods/ the features he can use interface so that he can simply declare that methods which on the later section they can implement them 
 6. Use of interfaces increases the security, we are just exposing the important details 
+7. You cant use the non-static variables inside the interface as they are by default static and final, because if you use the
+variables inside an interface then they are obviously constants then there is no point in declaring them nonstatic as we don't want to
+maintain each copy of the constants for each of the object 
 
 Note 1 : 
 1. An empty interface is called marker interface 

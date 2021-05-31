@@ -1,0 +1,6 @@
+\connect root@localhost --> to open the session for the user root 
+\sql --> switch to the sql mode
+use devdb --> to connect with the db
+ create database devdb character set utf8 collate utf8_bin;
+
+https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-commands.html

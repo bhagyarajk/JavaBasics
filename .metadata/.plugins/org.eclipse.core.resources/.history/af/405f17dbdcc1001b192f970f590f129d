@@ -1,0 +1,7 @@
+package com.keepitsimple.interfaces;
+
+public interface ChildInterface extends ParentInterface1, ParentInterface2 {
+	int y=10;
+	void display();
+
+}

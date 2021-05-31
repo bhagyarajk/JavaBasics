@@ -11,7 +11,7 @@ If the same method of the resource is shared by the multiple threads, then few t
 for that reason we have something known as the thread synchronization, by using the keyword synchronized (only with the methods and the blocks not with variables )
 and we can synchronize a class method or a block but the most common one is synchronizing the method
 
-The synchronization works with the concepts of locks and keys and In java we can have an object level, class level locks 
+The synchronization works with the concepts of locks and keys and In java we can have an object level (Object level lock), class level locks (Entire class level lock like even if there are 1000 instances of that class in the memory only one object is allowed for one thread at a time) 
 */
 public class ByImplementingRunnable {
 	public static void main(String[] args) throws InterruptedException {
