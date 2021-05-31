@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename package &apos;com.java.ThreadDemo&apos; to &apos;com.java.keepitsimple.multithreading&apos;&#x0D;&#x0A;- Original project: &apos;Practice Java&apos;&#x0D;&#x0A;- Original element: &apos;Practice Java/src/com.java.ThreadDemo&apos;&#x0D;&#x0A;- Renamed element: &apos;Practice Java/src/com.java.keepitsimple.multithreading&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.java.ThreadDemo&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.java.ThreadDemo" name="com.java.keepitsimple.multithreading" qualified="false" references="true" stamp="1622445250556" textual="false" version="1.0"/>
-</session>

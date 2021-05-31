@@ -1,4 +1,4 @@
-package com.java.ThreadDemo;
+package com.keepitsimple.multithreading;
 
 // Here we shown how to create a thread by extending the thread class
 

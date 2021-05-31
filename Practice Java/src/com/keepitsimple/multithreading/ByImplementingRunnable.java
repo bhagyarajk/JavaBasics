@@ -1,4 +1,4 @@
-package com.java.ThreadDemo;
+package com.keepitsimple.multithreading;
 
 /*Generally we need the props of the Thread class to be able to create the new thread for that Thread class class has many constructors 
 one accepts runnable interface object where as the other is the no-argument constructor and many other constructors exists
