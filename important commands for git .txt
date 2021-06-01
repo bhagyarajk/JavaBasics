@@ -3,7 +3,7 @@ These are not the most commonly used commands but sometime they are important
 1.Working directory --> As the name suggests it's just a working directory, that's where our files lives, and it contains untracked and tracked files both (RED)
 2.Staging area/ Index / Cache (Once you stage the changes) --> (GREEN)
 3. Local Repository -> .git directory (After the commit)
-checkout the evernoteclip or https://devconnected.com/how-to-clear-git-cache/ for more about the same 
+checkout the evernoteclip or https://medium.com/@lucasmaurer/git-gud-the-working-tree-staging-area-and-local-repo-a1f0f4822018 for more about the same 
 git revert commithash ---> generates a new revert commit rather than deleting the entire new commits, use -e flag to edit the commit message explicitely
 git reset --hard commithash --> deletes all the new commits 
 git checkout -- filename --> restore the working tree, most common one is git checkout -- . : this command will restore the working directory to be as same as the previous commit (checkout tries to checkout the working tree to the privious commit)
