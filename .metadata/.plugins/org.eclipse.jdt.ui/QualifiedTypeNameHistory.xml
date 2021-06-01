@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="com.keepitsimple.java.BlocksAndConstructors"/>
     <fullyQualifiedTypeName name="com.keepitsimple.abstraction.ChildOfTest"/>
     <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ParentInterface2"/>
-    <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ParentInterface1"/>
     <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ChildInterface"/>
     <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ChildInterface2"/>
     <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ImplementationClass"/>
@@ -27,4 +26,5 @@
     <fullyQualifiedTypeName name="sun.security.action.GetBooleanAction"/>
     <fullyQualifiedTypeName name="com.keepitsimple.cloning.Demo2"/>
     <fullyQualifiedTypeName name="com.java.ThreadDemo.DemoThread"/>
+    <fullyQualifiedTypeName name="com.keepitsimple.interfaces.ParentInterface1"/>
 </qualifiedTypeNameHistroy>

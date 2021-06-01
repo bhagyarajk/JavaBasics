@@ -1,0 +1,45 @@
+Collection framework library 
+------------------------------
+We are covering only the important and most commonly used ones, not the entire library
+Note : Dotted line here does not mean the implementation(Can be implements or extends) condition just for the simplicity they are shown like that 
+
+Hierarchy in java 
+----------------------
+1. Iterator(I) --> Collection(I) ---> a. List(I) b.Set(I) c. Queue(I)
+
+List
+---------
+1. a. List : 1. ArrayList 2. LinkedList 3. Vector
+2. Vector --> Stack 
+
+Set
+--------
+1. HashSet 2. LinkedHashSet 3. SortedSet(I)
+2. SortedSet(I) --> NavigableSet(I) ---> TreeSet
+
+Queue
+--------
+PriorityQueue
+
+Collection Interface methods
+--------------------------------
+All the bellow methods are public methods
+1. boolean add(Object o)
+2. boolean addAll(Collection c)
+3. boolean remove(Object o)
+4. boolean removeAll(Collection c)
+5. boolean contains(Object o) --> used to search the element in the collection 
+6. boolean containsAll(Collection c) --> used to search the collection in the collection
+7. boolean removeIf(Predicate fiter) --> ie. Predicate(I) functional interface --> Predicates means single arguments functions that 
+will either return true or false
+
+ex. 
+ArrayList arrayList = new ArrayList();
+arrayList.add(10);
+arrayList.add(20);
+arrayList.removeIf(number -> (number % 2 == 0));
+// This removes all the even elements
+
+8. 
+
+

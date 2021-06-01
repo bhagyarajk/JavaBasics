@@ -1,0 +1,16 @@
+package com.keepitsimple.java8.lambdaexpressions;
+
+import java.util.ArrayList;
+
+public class LambdaWithComparatorInterfaceinList {
+	public static void main(String[] args) {
+		System.out.println("Main method started");
+		ArrayList<Integer> arrayList = new ArrayList<Integer>();
+		arrayList.add(10);
+		arrayList.add(20);
+		arrayList.add(0);
+		arrayList.add(-10);
+		arrayList.add(50);
+
+	}
+}

@@ -1,8 +1,0 @@
-package com.java.ThreadDemo;
-
-public class ByImplementingRunnable {
-	public static void main(String[] args) {
-
-	}
-
-}

@@ -1,8 +1,0 @@
-package com.keepitsimple.exceptionhandling;
-
-public class BankAppUtil {
-	public static void main(String[] args) {
-		System.out.println("Main method of the Bank App started");
-	}
-
-}
