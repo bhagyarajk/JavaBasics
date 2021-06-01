@@ -4,6 +4,7 @@ package com.keepitsimple.dynamicpolymorphism;
 public class DynamicPolymorphism extends Test {
 	@Override
 	public void display() {
+		
 		System.out.println("Display method of the child class");
 	}
 

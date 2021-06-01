@@ -1,9 +1,22 @@
+These are not the most commonly used commands but sometime they are important 
+-----------------------------------------------------------------------------
 git revert commithash ---> generates a new revert commit rather than deleting the entire new commits, use -e flag to edit the commit message explicitely
 git reset --hard commithash --> deletes all the new commits 
 git checkout -- filename --> restore the working tree
 git restore --statged or git reset path  --> to unstage perticular files/ all the files you can use wildcar *
 git rm -rf --cached path --> how to unstage the commited files
 git status --ignored --> The files ignored by the git some time you need to use the -s flag
+git clean -n --> will tell you what will happen when you run git clean command, clean command is used to remove the untracked files
+Untracked files : Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (Simply its a new file for git)
+git clean -n -d -x --> d - for directories x-> for ignored files 
+becarefull while running git clean without the -n flag - it will removed the utracked files from the working directory
+git stash command --> this is used to save from the dirty commits : stash is nothing but just to create a draft copy, you can create any number of drafts
+git stash --> creates the draft copy but does not apply it
+git stash apply --> now the changes done in stash are applied
+git stash list --> Lists the stashes
+git stash push -m "messege" --> just to identify the purpose of the stash we can use this, this will not push the stash anywhere
+git stash apply indexnumber -> apply the perticular stash
+git stash drop indexnumber --> drop the stash
 
 Note : ref and reflog 
 ref --> anything which points to the commit, you can use this ref as an alternative of using the commit hash, Head@2 means this is the reflog : which tells
