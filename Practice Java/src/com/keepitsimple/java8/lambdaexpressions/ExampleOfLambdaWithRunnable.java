@@ -4,8 +4,7 @@ public class ExampleOfLambdaWithRunnable {
 	public static void main(String[] args) {
 		System.out.println("main method started ...");
 		// Lambda expression for the same
-		// We have use the lambda expressions wherever you have functional interface you
-		// can use it
+		// We have to use the lambda expressions wherever you have functional interface
 		// Syntax you can see that
 		// for more details have to go through the notes
 		Runnable runnable = () -> {
