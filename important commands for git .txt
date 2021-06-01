@@ -1,0 +1,11 @@
+git revert commithash ---> generates a new revert commit rather than deleting the entire new commits, use -e flag to edit the commit message explicitely
+git reset --hard commithash --> deletes all the new commits 
+git checkout -- filename --> restore the working tree
+git restore --statged or git reset path  --> to unstage perticular files/ all the files you can use wildcar *
+git rm -rf --cached path --> how to unstage the commited files
+git status --ignored --> The files ignored by the git some time you need to use the -s flag
+
+Note : ref and reflog 
+ref --> anything which points to the commit, you can use this ref as an alternative of using the commit hash, Head@2 means this is the reflog : which tells
+the commit hash that the Head was pointing before two shifts(before updating the head 2 times)
+.git/refs/heads --> will contain the branch names which intern contains the latest commits or the tip of the branch
