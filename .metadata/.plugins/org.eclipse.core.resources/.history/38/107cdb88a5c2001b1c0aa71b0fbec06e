@@ -1,8 +1,0 @@
-package com.keepitsimple.java8.lambdaexpressions;
-
-public class ExampleOfLambdaWithRunnable {
-	public static void main(String[] args) {
-System.out.println("main method started ...");
-	}
-
-}

@@ -1,7 +1,0 @@
-package com.keepitsimple.java;
-
-public class ConstrutctorcallingAndChaining {
-public static void main(String[] args) {
-	
-}
-}

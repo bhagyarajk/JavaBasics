@@ -1,7 +1,0 @@
-package com.keepitsimple.java8.lambdaexpressions;
-
-public class LambdaWithCloning {
-	public static void main(String[] args) {
-		System.out.println("Inside the main method ..");
-		Cloneable cloneable = () -> super.clone();	}
-}

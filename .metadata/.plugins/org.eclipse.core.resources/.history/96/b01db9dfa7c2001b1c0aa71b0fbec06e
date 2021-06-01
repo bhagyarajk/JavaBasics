@@ -1,7 +1,0 @@
-package com.keepitsimple.java8.lambdaexpressions;
-
-public class LambdaWithComparatorInterfaceinList {
-	public static void main(String[] args) {
-		System.out.println("Main method started");
-	}
-}

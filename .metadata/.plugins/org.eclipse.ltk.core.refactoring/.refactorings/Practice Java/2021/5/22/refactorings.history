@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;com.java.ThreadDemo.ThreadClass&apos; to &apos;CreateThreadByThreadClass&apos;&#x0D;&#x0A;- Original project: &apos;Practice Java&apos;&#x0D;&#x0A;- Original element: &apos;com.java.ThreadDemo.ThreadClass&apos;&#x0D;&#x0A;- Renamed element: &apos;com.java.ThreadDemo.CreateThreadByThreadClass&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ThreadClass&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.java.ThreadDemo{ThreadClass.java[ThreadClass" matchStrategy="1" name="CreateThreadByThreadClass" qualified="false" references="true" similarDeclarations="false" stamp="1621792977453" textual="false" version="1.0"/>
-</session>

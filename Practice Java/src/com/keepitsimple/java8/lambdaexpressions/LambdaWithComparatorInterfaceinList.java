@@ -28,6 +28,8 @@ public class LambdaWithComparatorInterfaceinList {
 		// lambda expressions here
 		Comparator<Integer> comparator = (element1, element2) -> (element1 > element2) ? -1
 				: (element1 < element2) ? 1 : 0;
+		// you can even directly pass the lambda expression
+
 		Collections.sort(arrayList, comparator);
 		System.out.println("List in the descending order : " + arrayList);
 
