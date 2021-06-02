@@ -1,4 +1,4 @@
-package com.keepitsimple.java.languagedefaults.section3;
+package com.keepitsimple.java.objectclass;
 
 public class ObjectClass {
 	public static void main(String[] args) {

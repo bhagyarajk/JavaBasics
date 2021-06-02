@@ -23,9 +23,38 @@ git stash push -m "messege" --> just to identify the purpose of the stash we can
 git stash apply indexnumber -> apply the perticular stash
 git stash drop indexnumber --> drop the stash
 git commit --amend --> change the commit msg
-git pull origin master --allow-unrelated-histories
+git pull origin master --allow-unrelated-histories - when remote and local contents does match and pull was not successfull
+If you dont want to use the git push and just want to use the git fetch and git merge sequentially --> then to run merge command remember this : git merge FETCH_HEAD
 
-Note : ref and reflog 
-ref --> anything which points to the commit, you can use this ref as an alternative of using the commit hash, Head@2 means this is the reflog : which tells
+Note 1: ref and reflog 
+ref --> anything which points to the commit or stash, you can use this ref as an alternative of using the commit hash, Head@2 means this is the reflog : which tells
 the commit hash that the Head was pointing before two shifts(before updating the head 2 times)
 .git/refs/heads --> will contain the branch names which intern contains the latest commits or the tip of the branch
+
+Note 2: Cherry picking 
+
+Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+
+This is in contrast with other ways such as merge and rebase which normally apply many commits onto another branch.
+
+    Make sure you are on the branch you want to apply the commit to.
+
+     git switch master
+
+    Execute the following:
+
+     git cherry-pick <commit-hash>
+
+N.B.:
+
+    If you cherry-pick from a public branch, you should consider using
+
+     git cherry-pick -x <commit-hash>
+
+    This will generate a standardized commit message. This way, you (and your co-workers) can still keep track of the origin of the commit and may avoid merge conflicts in the future.
+
+    If you have notes attached to the commit they do not follow the cherry-pick. To bring them over as well, You have to use:
+
+     git notes copy <from> <to>
+
+
