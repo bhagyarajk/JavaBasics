@@ -1,4 +1,4 @@
-package com.keepitsimple.java.objectclass;
+package com.keepitsimple.objectclass;
 
 public class ObjectClass {
 	public static void main(String[] args) {

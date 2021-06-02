@@ -1,4 +1,4 @@
-package com.keepitsimple.java.objectclass;
+package com.keepitsimple.objectclass;
 
 public class MobileClass {
 	String modelName;
