@@ -16,7 +16,7 @@ Untracked files : Untracked files are everything else — any files in your work
 git clean -n -d -x --> d - for directories x-> for ignored files 
 becarefull while running git clean without the -n flag - it will removed the utracked files from the working directory
 git stash command --> this is used to save from the dirty commits : stash is nothing but just to create a draft copy, you can create any number of drafts
-git stash --> creates the draft copy but does not apply it
+git stash --> creates the draft copy of newly made changes after the latest commit but does not apply it, (means it will stash all the new changes after the latest commit and it will bring us in the status where we were after our latest commit)
 git stash apply --> now the changes done in stash are applied
 git stash list --> Lists the stashes
 git stash push -m "messege" --> just to identify the purpose of the stash we can use this, this will not push the stash anywhere
@@ -25,7 +25,13 @@ git stash drop indexnumber --> drop the stash
 git commit --amend --> change the commit msg
 git pull origin master --allow-unrelated-histories - when remote and local contents does match and pull was not successfull
 If you dont want to use the git push and just want to use the git fetch and git merge sequentially --> then to run merge command remember this : git merge FETCH_HEAD
-
+If you want git to ask for the creds :
+git config --system credential.helper
+git config --global credential.helper
+git config --local credential.helper
+git config --system --unset credential.helper
+git config --global --unset credential.helper
+git config --local --unset credential.helper
 Note 1: ref and reflog 
 ref --> anything which points to the commit or stash, you can use this ref as an alternative of using the commit hash, Head@2 means this is the reflog : which tells
 the commit hash that the Head was pointing before two shifts(before updating the head 2 times)
