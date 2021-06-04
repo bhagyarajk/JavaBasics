@@ -15,6 +15,8 @@ git clean -n --> will tell you what will happen when you run git clean command, 
 Untracked files : Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (Simply its a new file for git)
 git clean -n -d -x --> d - for directories x-> for ignored files 
 becarefull while running git clean without the -n flag - it will removed the utracked files from the working directory
+git stash : git stash will take you to the position where you were after your latest commit, the changes after that commit were stashed, you need to apply the stash 
+Note : If you directly drop the stash before applying you will endup loosing all your new changes after the latest commit
 git stash command --> this is used to save from the dirty commits : stash is nothing but just to create a draft copy, you can create any number of drafts
 git stash --> creates the draft copy of newly made changes after the latest commit but does not apply it, (means it will stash all the new changes after the latest commit and it will bring us in the status where we were after our latest commit)
 git stash apply --> now the changes done in stash are applied
