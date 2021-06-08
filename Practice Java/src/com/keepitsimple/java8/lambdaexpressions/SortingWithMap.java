@@ -26,6 +26,8 @@ public class SortingWithMap {
 		treeMapWithLambda.put(4, "to Java");
 		treeMapWithLambda.put(50, "Just checking");
 		System.out.println("Tree Map after the customized sorting : " + treeMapWithLambda);
+		
+		
 	}
 
 }
