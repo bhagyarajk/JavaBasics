@@ -17,7 +17,17 @@ public class WrapperClassesDemo {
 		// Manual unboxing
 		// Nonstatic method
 		int var4 = var2.intValue();
+		
+		// usage of parseInt
+		String s = "111";
+		// The second parameter will take radix, it means the second parameter is used to specify the base system of the number that you passed in first param
+		// Means, the string you are passing is of base 2 or binary number, and should be converted into decimal, this will give the output 7
+		int a = Integer.parseInt(s,2);
+		System.out.println(a);
+		}
+	// There is a static method toString() in wrapper classes don't confuse with the toString() method of object class which is non static, we are not overriding 
+	// the signature of static toString() method is different 
 
-	}
+
 
 }

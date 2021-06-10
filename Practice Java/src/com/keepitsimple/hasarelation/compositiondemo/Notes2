@@ -1,0 +1,22 @@
+Difference between composition and aggregation 
+---------------------------------------------------
+Source : Durga Sir (Durga soft solutions)
+# Composition -->
+
+1. University and Department --> University is a container object because university contains, departments, lly departments is the contained object
+2. Without existing container object if there is no chance of existing contained objects then container and contained objects are strongly associated, and this strong association is nothing but composition
+
+# Aggregation --> 
+1. Department and Professors --> Without existing container object if there is a chance of existing contained object then container and contained objects are weakly associated,
+and this weak association is nothing but aggregation 
+ex : Department consists of several professors, without existing department there may be a chance of existing professor objects hence, Department and Professor objects are 
+Weakly associated and this week association is nothing but Aggregation
+
+Very Important notes : 
+1. In composition Objects are strongly associated where as in aggregation objects are weakly associated
+2. In composition container objects holds directly contained objects, where as in aggregation container object holds just the ref of contained objects
+
+When to go for Is-A and when to go for Has-A
+------------------------------------------------------
+If we want the total functionality of a class --> Is-A
+If we only want part of functionality of the class --> Has-A
