@@ -1,0 +1,72 @@
+// Association, Aggregation and composition 
+------------------------------------------------------------------------
+
+All these three talks about the HAS-A relations 
+ex. Class has students, University has departments, House has Rooms
+1. Association simply tells about the relationships of classes through the class objects
+2. We don't have any specific keyword to establish this relationship 
+3. If you create an object of another class in one class --> then there exists an Association between those classes --> means even using new keyword is a type of has-A
+3. Association is denoted by a straight line in UML diagrams
+
+# Note : Aggregation is denoted by a straight lines connecting the classes with the hallow diamond at the tip
+# Note : Composition is denoted by a straight lines connecting the classes with the solid diamond at the tip
+
+Both of these Aggregation talks about having an object ref of one class as a member of another class 
+ex : 
+class A {
+B b; // Here this B b is a ref of type B --> b is a ref of Class B
+}
+class B {
+}
+this above code is an example of has-a relation -> A has B
+
+1. Aggregation --> This is the subset of the association,but in this case contained object
+identity exists independent of container object
+example : ClassRoom and Student, ClassRoom has a student so ClassRoom is container object and student is a contained object , student exists even if there is no ClassRoom
+
+class ClassRoom {
+Student student;
+}
+class Student {
+}
+// Very imp : In aggregation : container object only contains the references of contained object, not the contained objects it self
+
+2. Composition --> Composition is a subset of Aggregation, it's one of the special case of aggregation, here in this case 
+the contained  object/ objects should not exists if the container object got destroyed, in other words you must need a container object ref to get access to the contained object
+
+ex : Person and Job -> Person has a Job, so if the person object does not exists => person ref does not exits => Job associated with that person should not exists
+class Person {
+Job job;
+}
+class Job {
+}
+
+// you should write a logic in such a way that the job object assoicated to perticular person will not be accessible if that perticular person object is no more
+// If there is a job object which is not related to the person, then it will not be impacted here => means if you directly create the job object without the person object means if you don't have that relation between the objects then this rule is not applicable --> its not at all a Has-A relation
+// Composition is a restricted form of aggregation where each of the classes are highly dependent on each other --> tighly related 
+// Composition is also called as part-of relation, like job is a part of Person, without that person the job associated with that Person will not exists
+// I will demonstrate the same on the programming
+// In composition we can even say, container object owns a contained object --> or University owns the department
+
+Important : Container object directly the container object unlike the aggregation which only holds the references for the object
+
+Ways to achieve this composition 
+---------------------------------------
+1. Lets take an example of the same -> Person and Job --> you need to make sure the Job object should not be accessible without the person object
+2. We will declare a job variable inside a person with final keyword, as we already know final blank variables ensure that the vars are initialized
+3. As already suggested here container object should directly contain the contained object (not the references, it should contain direct object) so to achieve this we will create the cotained object within the costructor of the container object, so that you need the ref of the container object to access the contained object, if you destroy the container object then contained object become not accessible
+4.checkout the example to understand more
+
+Note : 
+1. If A and B are classes then if 
+
+1. A uses B --> then it's aggregation 
+2. A owns B --> then it's composition --> here B has no meaning without A, B can exits but has no meaning
+
+Conclusion 
+-----------------
+1. To implement Composition --> we need to create the object of the contained class within the container class to hinder to access to the contained class without the container class object reference
+2. To implement Aggregation --> We will not create the object of the contained class within the container class, it makes easy to access the contained class without the container class ref
+here we will only have the ref to the contained class objects, so even if our container class object got destroyed we can access the contained objects with the help of other references
+
+Imp note : Composition is a way to achieve multiple inheritance
