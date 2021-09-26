@@ -381,6 +381,32 @@ The following declarations are equal
 For these ArrayList objects we can add only the string type of objects
 
 
+Tips and Thumb rules
+------------------------------
+1. Type parameter in the class is used to make the class generic class
+2. Type parameter in the generic class, left side of the --> 
+something s = new something, the left side of this assignment ---> and the right side of this assignment
+means --> <T> dicides what needs to be written in --> left side statement --> left side statement decides what needs to be written in --> right side of the statement
+
+ex. ArrayList<T> --> ArrayList<String> --> right side you can create and object of arraylist of type String ie. new ArrayList<String>("this must be string..")
+
+3. class Student <T extends Number> {
+
+}
+Student<Integer> student = new Student(); // valid statement -> T will be replaced by Integer as the last step of the compilation 
+Student<String> student = new Student(); // Invalid statement -> compiler tries to replace T by String, but they check the condition, String is not a child of Number so compiler will not be able to replace, so compiler throws error
+Student<? extends Object> student = new Student(); // Valid statement -> the meaning of <? extends Object> is any classes which are the child classes of Object, then the compilers checks the condition, the condition is the classes should be either Number or the child classes of Number, and as our wildcard statement covers all the classes even Number and it's child classes the compiler replaces T by object 
+twist : even though the compiler will not throw any error, you will not be able to add the objects of classes other than Number of child classes of Number
+means --> student.setSomething(something) --> will not work because you are not sure which object is been injected in the future (it can be any class object in the group of allowed classes)
+
+4. Not making so much complicated just understand wildcards in generics can behave abnormally, because even though compilers replaces T with some other class, it will not behave normally
+ie. Just like the above statement setSomething in the above case will actually accepts the arguments of type object, but compiler will not allow any object to pass to that method
+it's because of the uncertainity of the object in the runtime, means you can inject anytype of objects from the allowed group of classes, so compiler is not sure on which object will be injected
+
+
+
+
+
 
 
 

@@ -8,8 +8,8 @@ checkout the evernoteclip or https://medium.com/@lucasmaurer/git-gud-the-working
 git revert commithash ---> generates a new revert commit rather than deleting the entire new commits, use -e flag to edit the commit message explicitely
 git reset --hard commithash --> deletes all the new commits (Deletes all the new commits till the mentioned commit)
 git checkout -- filename --> restore the working tree, most common one is git checkout -- . : this command will restore the working directory to be as same as the previous commit (checkout tries to checkout the working tree to the privious commit)
-git restore --staged filename or git reset filename  --> to unstage perticular files/ all the files you can use wildcar * : this is simply remove the the files from the staging area but git is still tracking these files
-git rm -rf --cached filename(can use * for all and . for the current directory files) --> This is you need to use to delete the file from the staging area, means converts file to untracked file , means git is no more tracking that file 
+git restore --staged filename or git reset filename  --> to unstage perticular files/ all the files you can use wildcar * : this is simply remove the the files from the staging area (Only staged to untracked), means staged to untracked files but they are still there in the working directory 
+git rm -rf --cached filename(can use * for all and . for the current directory files) --> convert the file to untracked file, ex. commited to untracked, staged to untracked etc 
 git status --ignored --> The files ignored by the git some time you need to use the -s flag
 git clean -n --> will tell you what will happen when you run git clean command, clean command is used to remove the untracked files
 Untracked files : Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (Simply its a new file for git)
@@ -64,5 +64,12 @@ N.B.:
     If you have notes attached to the commit they do not follow the cherry-pick. To bring them over as well, You have to use:
 
      git notes copy <from> <to>
+	 
+	 
+	 
+	git reset --soft --> uncommit the commited
+	git reset --mixed (default one) --> uncommit the committed, unstage the staged files, ie. convert the files to untracked
+	git reset --hard --> uncommit, unstage, remove it from the working directory also, means ultimately you will end up loosing the files 
+	
 
 

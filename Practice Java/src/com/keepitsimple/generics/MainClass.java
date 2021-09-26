@@ -56,6 +56,26 @@ public class MainClass {
 		// not the String class
 		// ReturnNumber number2 = new ReturnNumber("Bhagyaraj", 20.2, "One more");
 
+		demo.test(arrayList);
+		ReturnNumber test = new ReturnNumber<Integer, Integer>(10, 20, "hello");
+
+		// Here you can set the value to the student because the wild card has the super
+		// and only integer can be added
+		Student<? super Integer, ? super Integer> student = new Student();
+		Integer value = 10;
+		student.setName(value); // setName here will actually has the parameter of type Object I mean which
+								// actually accepts object but still you can only add Integer type
+		// you have used the extends with the wildcard you can only add null other than
+		// that no other type is allowed so
+		// below setmethod will throw cte
+
+//		Student<? extends Integer, ? extends Integer> student2 = new Student();
+//		Integer value2 = 10; 
+//		student2.setName(value2); // setName will actually accepts the parameters of the type Integer, but still you can't add Integers
+
+		// T replaced by Object but, does not behaves as expected
+		ReturnNumber<? extends Object, ? extends Object> test2 = new ReturnNumber(11, 20, "hello");
+
 	}
 
 }

@@ -34,4 +34,9 @@ public class DemoClass {
 
 	}
 
+	public void test(ArrayList<? super Integer> list) {
+		list.add(10);
+		System.out.println(list);
+	}
+
 }

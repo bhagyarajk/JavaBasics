@@ -1,0 +1,115 @@
+yield method 
+---------------------------------------
+Easy to remember ---> YS are static --> ie. yield() and sleep() method are static methods
+
+Why we need yield() method --> 
+# Telephone booth example of Durga sir,
+If a thread t1 is taking 10hrs for completion there is a chance that another thread is waiting which will take only 1ms for completion, but 
+as t1 is executing in the processor other threads wont get the processor time (assuming a single core cpu system),
+to avoid such situations we will go for yield method which pauase it's execution or which passes it's processor time for other waiting threads of same priority 
+
+# yield() method allows time slicing or multitasking 
+ 
+1. yield method is the static method 
+2. Thread.yield()
+3. When a thread calls yield method it pauses it's execution and gives chance to other waiting threads of same or higher priority 
+4. If the waiting threads are of low priority then thread continues execution
+5. When a thread calls yield method it goes to runnable or read state again (not waiting state), when it gets the chance again ?  we don't know that depends on thread scheduler
+6. Which thread will get the chance? when a thread calls yield method ? --> Depends on thread scheduler
+
+Conclusions : Ideally we will call yield() method when we know that the thread is going to take a lot of time... in that situations we will call yield() method
+after few lines of code again and again 
+
+Join method
+-----------------------------------------------
+# Non static method present in Thread class
+# We have to call this method on any thread 
+# As the name suggests it joins another thread as shown below 
+
+											t1
+											|
+											|  --> t1 thread
+											|
+									    t2.join() --> Joining thread t2 with t1 (when t1 thread calls join method on t2)
+									      	|
+									      	| ---> t2 thread
+									      	|
+									   t2 completed
+									        |
+									        | --> t1 thread again 
+									        | 
+									   t1 continues
+									    	|
+									    	|
+									        |
+
+# When a thread t1 calls join method on t2 thread, then the t1 will enter into waiting state and it has to wait until t2 finishes completely 
+# We have the overloaded join methods --> join() , join (long time in ms), join(long time in ms, int time in ns) 
+# When a thread calls join method on any thread, the calling thread will enter into the waiting state and it will go to runnable state again when one of the fallowing things occure
+
+		a. When the other thread completed
+		b. Timing expired
+		c. Waiting thread got interrupted
+		
+ new --> runnable state --> running state ---> when you call join method here --> waiting state --> when any of the above things occur ---> runnable state again 
+ 
+ 
+# If you badly use join method it can cause deadlock like situation, where the program will stuck in such cases
+
+Imp : 
+
+		public static void main(String [] args) {
+				
+				// Here from below statement you can see 
+				// main thread is calling join method on the same main thread
+				// It means main thread is waiting for main thread, this will cause 
+				// deadlock like situation
+		 		Thread.currentThread().join() 
+		 }
+
+conclusion : We use join method when we want to wait for the other thread for the results.
+
+
+Sleep 
+----------------------------
+# sleep method is again a static method 
+# We can call sleep method like Thread.sleep(time)
+# sleep with no-arg does not exists
+# sleep method is over loaded method --> sleep(long ms, int ns), sleep(long ms)
+# when a thread calls sleep method, it goes to sleeping state (almost similar like waiting state but the thread is not actually waiting for anything so we named this state as sleeping state)
+and it will again come to runnable state when any of the fallowing occure
+
+			a. When time expires
+			b. Sleeping thread got interrupted
+			
+ new --> runnable --> running --> Thread.sleep(2000) --> runnable again 
+ 
+ 
+ Interruption 
+ ----------------
+ # How the thread will get interrupted ?
+ # We have interrupt() method in thread class, its not-static method
+ # when t1 calls interrupt method on t2 --> t2.interrupt() --> jvm checks 
+	 1. if t2 is in waiting state or not if t2 is in waiting state then 
+	 InterruptedException occurs
+	 2. when t2 is not in waiting state, it's in running state : this time there is no exception but interrupt call will not be wasted, 
+	 Interrupt call is like Nagin, it will wait for the revange :) haha kidding I mean jvm keep track of t2 thread when you call interrupt method on t2,
+	 may be after sometime if t2 enters waiting state --> at that time InterruptedException occurs 
+	 
+	 so conclusion : when a thread class interrupt method on other thread, it will cause interrupted exception whenever the other thread enters into waiting state 
+	 
+	 3. if t2 does not enter into waiting state in it's enter lifecycle --> then interrupt call is wasted
+	 
+# Is interruption good or bad ? --> Most of the times bad but not always 
+sometimes it's good also when a thread is waiting for indefinite time its better to interrupt in few cases 
+ 
+
+ 
+
+
+
+
+
+
+
+

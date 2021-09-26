@@ -16,6 +16,11 @@ public class ReturnNumber<T1 extends Number, T2 extends Number> {
 		return this.number;
 	}
 
+	public void setNumber(T1 number) {
+		this.number = number;
+
+	}
+
 	public T2 getPointNumber() {
 		return this.pointNumber;
 	}
