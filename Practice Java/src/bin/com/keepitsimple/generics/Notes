@@ -1,0 +1,419 @@
+Introduction : Purpose of Generics - Templates in C++
+-----------------------------------------------------------
+1. To provide type safety
+And
+2. To resolve type casting problems
+
+Purpose 1 : 
+-------------------------
+case 1 : type safety : 
+-----------------------------
+1. Arrays are type safe --> we can guarantee for the type of elements present inside an array, for ex If our programming requirement is to hold only string type
+of objects then we can choose String array, by mistake if we are trying to add any other type of objects, we will get compile time error
+ex. String [] s = new String[1000];
+s[0] = "raj";
+s[1] = "hello";
+// below line will give the cte : Incompatible types, found : java.lang.Integer, required java.lang.String
+s[2] = new Integer(10);
+
+case  2 : type unsafe :
+----------------------------------
+ArrayList a = new ArrayList();
+a.add("Hello");
+// No compile time error for the below line, it means here arraylist is behaving type unsafe
+a.add(new Integer(10));
+
+Now we know arrays are not growable, if we want growable array but the type safe one? what to do in that case ?
+we will go for generics concept
+
+Purpose 2 : 
+---------------------------
+In arrays at the time of retrieval there is no need for typecasting because there is a guarantee for the type of elements present inside an array
+
+String [] s = new String[1000];
+s[0] = "raj";
+s[1] = "hello";
+
+for the above code we need not to typcast 
+In collection we need to type cast at the time of retrieval because there is no guarantee that the arraylist will only contain strings
+ArrayList a = new ArrayList();
+a.add("Hello");
+for the above 2 lines of code we need to typecast, because without the typecast you cant accept it as a string
+String s = (String) a.get(0)
+
+// To overcome these above problems Generics has been introduced
+
+Now how can we have an arraylist which is type safe 
+----------------------------------------------------------------
+1. The ans is generics 
+ArrayList<String> al = new ArrayList<String>();
+al.add("Hello")
+Now arraylist become type safe, if you now add the objects other than String it will throw error
+
+and 
+while retrievals we are not required to perform typecasting
+
+String s = al.get(0);
+
+-------------------------------------------------------------------------------------------------------------------
+ArrayList<String> al = new ArrayList<String>();
+
+Note 1 : 
+
+where ArrayList part -->  is called base type
+where String part --> is called parameter type
+
+// We are using polymorphism concept here
+List<String> list = new ArraList<String>();
+
+// Below line will give the error - because polymorphism concept applicable only for base type not the ref type
+List<Object> list2 = new ArrayList<String>();
+
+Note 2 : 
+Base type can be any class or interface name but not premitives
+Base type can't be premitives so below line will error
+ArrayList<int> al = new ArrayList<int>();
+
+-----------------------------------------------------------------------------------------------------------------------------
+Generic classes --> A class with parameter types are called generics class
+Internal working of generics 
+
+# Until 1.4v a non-generic version of arraylist class is declared as follows
+class Al{
+ add(Object) {
+ }
+Object get(int index) {
+
+ }
+} 
+
+# The Argument to add method is Object and hence, we are able to add any types of objects into arrayList, due to this we are missing type safety
+# The return type of get method is Object hence, at the time of retrieval we have to perform typecasting
+
+# 1.5v 
+-----------------
+class AL<T> {
+add(T t)
+T get(int index)
+}
+
+Where T is the type parameter 
+This means add method can take T type and, get method can return T type
+based on the runtime T will be replace with the perticular types like String, Human, Customer etc..
+
+If we declare arraylist like 
+ArrayList<String> al = new ArrayList<String>();
+
+
+then compiler will modify these methods like --> means compiler will simply replace T by String in this case
+add (String s) {
+}
+String get(int index) {
+}
+
+based on our runtime requirement T will be replaced with our provided type
+
+These methods are modified in this way --> this is the reason why the arraylist becomes type safe and the need of typecasting is eleminated
+
+# In generics we are associating a type parameter to the class, such type of parameterized classes, are nothing but generic classes or Template classes
+
+# Note : Based on our requirement we can define our own generic classes also 
+ex : 
+class Account<T> {
+
+}
+Account<Gold> account = new Account<Gold>();
+Account<Silver> account = new Account<Silver>();
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Note : Is it possible to bound the type parameter ?
+
+Note 1 : 
+class Test<T> {
+T number;
+public T square() {
+ return number*number;
+}
+}
+Above lines of code will give the CTE, because T can be of anytype (unbounded type), we cant perform Arithmatic opertations on all the types, for that reason we need to do certain modifications to the code
+
+class Test<T extends Number> {
+T number;
+public T square() {
+ return number*number;
+}
+}
+Now T can take only the Numbers or the child objects of Number
+
+Note 2: 
+class Test<T implements Runnable> {
+T number;
+public T square() {
+ return number*number;
+}
+}
+
+above code will give the error, that is not a valid syntax, replace extends in place of implements also
+
+Conclusion : 
+
+class Test<T extends X> {
+
+}
+Where X can be : class or interface
+if X is a class : As a type parameter you can pass either X type or its child classes
+if X is an interface : then as a type param we can pass either X type or its implementation classes
+
+We pass anything other than this then there is a CTE, saying not in bound, like if we pass String instead of Integer then it says, String is not in bound
+
+Note 3 : 
+----------------
+class Test <T extends Runnable & Number> {
+
+}
+You can pass only Runnable or Runnable childs And Number or Number childs
+Note a : 
+imp : Just make sure you write the class first and interface after just like class A extends B implements C, if we write it like 
+class A implements C extends B --> then it is not a valid syntax
+
+Note b : 
+<T extends Thread & String> --> this is also not valid becase we cant extend more than one class 
+
+Note 4 : 
+------------
+We can use more than one type parameters also, seperated by comma
+
+class Test<T1, T2> {
+
+}
+
+Note 5 : What will happen when you did not pass type parameters ? or in other words how the concept of non-generic objects internally works
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Note a : 
+-----------
+while passing the type parameters if you did not pass any type parameters, compiler warns you (Raw type warn) to pass but may throw or maynot throw an error depeding on the fallowing context (It depends on what is been replaced inplace of T or Type parameter), checkout the prog example to understand when it throws error and when not
+it will do the following actions
+
+1. If there is any extends key word associated with that type parameter then it replaces all the T's with that class or interface name
+
+Reason : because as there is an extends keyword it means, the values that the type paramters can have is been bounded to Integer --> so Integer ref should be enough to handle the things, so the type Integer is applied every where
+ex: 
+
+class Test <T extends Integer> {
+public T doubleValue(T number) {
+ return number*2;
+	}
+}
+Test t = new Test();
+
+in this case the code will be converted into the following
+
+class Test <T extends Integer> {
+public Integer doubleValue(Integer number) {
+ return number*2;
+	}
+}
+
+Note b : 
+------------
+ If there is no extend, keyword then then it replaces these T's with Object
+Reason : As there is no extends keyword it means type parameter is not bounded, it can be anytype in this case it's essential to replace all the values with Object
+
+ex : 
+class Test <T> {
+public T doubleValue(T number) {
+ return number*2;
+	}
+}
+Test t = new Test();
+
+ replaced with
+ 
+class Test <T> {
+public Object doubleValue(Object number) {
+ return number*2;
+	}
+}
+Test t = new Test();
+
+note c : 
+------------
+When the type parameter is in below format it replaces everything with the first class after the extends that's Number here
+Reason : for the below format it means that type parameter should be Number or child and it should be Runnable or implementation class of Runnable or it should be Serializable or impl class of Serializable, it means any of these ref should be enough to handle the things
+
+class Test <T extends Number & Runnable & Serializable> {
+public T doubleValue(T number) {
+ return number*2;
+	}
+}
+Test t = new Test();
+
+converted into
+
+class Test <T extends Number & Runnable & Serializable> {
+public Number doubleValue(Number number) {
+ return number*2;
+	}
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. m1(ArrayList<String> al) {
+}
+---------------------------------------
+1. We can call this method by passing ArrayList of only string type
+2. But within the method we can add only string type of objects to the list, by mistake if we are trying to add any other type then CTE will occur
+
+m1(ArrayList<String> al) {
+al.add("a");
+al.add(null);
+al.add(10); --> not valid
+} 
+
+2. m1(ArrayList<?> al) {
+}
+-------------------------------
+1. We can call this method by passing an ArrayList of anytype
+2. Within the method we can't add anything to the list except null because we don't know the type exactly, null is allowed because it's a 
+
+valid value for any type
+m1(ArrayList<?> al) {
+al.add("a"); --> not valid
+al.add(10); --> not valid
+al.add(null); --> valid
+
+}
+
+this type of methods are best suitable for read only operations
+
+3. m1(ArrayList <? extends X> al) {
+}
+-----------------------------------------------------------------
+1. X can be either class or interface, we can call this method by passing ArrayList of either X type or it's child/ implementation classes
+2. Within the method we can't add anything to the list except null because we don't know the type exactly, because we don't know the type of X exactly, we came to know that at runtime
+3. This type of methods are also best suitable for read only operations
+
+4. m1(ArrayList <super X> al) {
+
+}
+-------------------------------------------
+1. X can be either class or interface if X is a class, then we can call this method by passing arraylist of either x type or it's super classes
+2. If X is an interface then we can call this method by passing ArrayList of either X type or super class of implementation class object
+ex : 
+Runnable --> Thread --> superclass is ---> Object --> either Runnable type or Object class objects
+3. within this method we can add x type of objects and null to the list
+
+----------------------------------------------------------------------------
+Note : 
+
+ArrayList<String> al = new ArrayList<String>();
+ArrayList<?> al = new ArrayList<String>();
+ArrayList<?> al = new ArrayList<Integer>();
+ArrayList<? extends Number> = new ArrayList<Integer>();
+ArrayList<? extends Number> = new ArrayList<String>(); --> CTE : Incompatible type
+ArrayList<? super String> = new ArrayList<Object>();
+
+Note : You can't use the boundary on the right hand side 
+means you cant use ?, on the right hand side
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Generic methods : 
+--------------------
+
+We can declare type parameter either at class level(after the class) or at method level(Just before return type)
+--------------------------------------------------------------------------------------------------------------------
+
+Declaring type parameter at class level
+----------------------------------------
+class Test<T> {
+
+}
+We can use this T based on our requirement
+
+
+Declaring type parameter at method level
+-------------------------------------------
+We can define the type parameter Just before the return type
+
+class Test {
+public <T> void m1 (T t) {
+// here we can use T anywhere
+}
+}
+we can use T anywhere in the method based on our requirement
+
+public <T extends Runnable>void m2(T t) {
+
+}
+... etc all the syntaxes which we studied in the class level holds good for the method level also 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+# Communication with non-generic code (Look at DemoClass)
+-------------------------------------------------------------
+# If we send generic object to non-generic area then it starts behaving like non-generic object lly if we send non-generic object to generic area then it starts behaving like
+generic object
+# That's the location in which object presents, based on that behavior is defined
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+# The main purpose of generics is to provide type safety and to resolve the typecasting problems
+# Type safety and type casting, both are appicable at the compile time hence Generics concept applicable only at the compile time but not at runtime
+# As a last step of compilation, the generics syntax is completely replaced,and hence for the jvm Generics syntax wont be available 
+Compiler will check only --> Ref type
+Jvm will check --> Run time object
+
+Hence the following declarations are equal
+
+1. ArrayList l = new ArrayList<String>();
+2. ArrayList l = new ArrayList<Integer>();
+3. ArrayList l = new ArrayList<Double>();
+
+All the above three are equal
+
+etc...
+example is demonstrated on the MainClass
+
+The following declarations are equal
+1. ArrayList<String> al = new ArrayList<String>();
+2. ArrayList<String> al = new ArrayList();
+
+For these ArrayList objects we can add only the string type of objects
+
+
+Tips and Thumb rules
+------------------------------
+1. Type parameter in the class is used to make the class generic class
+2. Type parameter in the generic class, left side of the --> 
+something s = new something, the left side of this assignment ---> and the right side of this assignment
+means --> <T> dicides what needs to be written in --> left side statement --> left side statement decides what needs to be written in --> right side of the statement
+
+ex. ArrayList<T> --> ArrayList<String> --> right side you can create and object of arraylist of type String ie. new ArrayList<String>("this must be string..")
+
+3. class Student <T extends Number> {
+
+}
+Student<Integer> student = new Student(); // valid statement -> T will be replaced by Integer as the last step of the compilation 
+Student<String> student = new Student(); // Invalid statement -> compiler tries to replace T by String, but they check the condition, String is not a child of Number so compiler will not be able to replace, so compiler throws error
+Student<? extends Object> student = new Student(); // Valid statement -> the meaning of <? extends Object> is any classes which are the child classes of Object, then the compilers checks the condition, the condition is the classes should be either Number or the child classes of Number, and as our wildcard statement covers all the classes even Number and it's child classes the compiler replaces T by object 
+twist : even though the compiler will not throw any error, you will not be able to add the objects of classes other than Number of child classes of Number
+means --> student.setSomething(something) --> will not work because you are not sure which object is been injected in the future (it can be any class object in the group of allowed classes)
+
+4. Not making so much complicated just understand wildcards in generics can behave abnormally, because even though compilers replaces T with some other class, it will not behave normally
+ie. Just like the above statement setSomething in the above case will actually accepts the arguments of type object, but compiler will not allow any object to pass to that method
+it's because of the uncertainity of the object in the runtime, means you can inject anytype of objects from the allowed group of classes, so compiler is not sure on which object will be injected
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+

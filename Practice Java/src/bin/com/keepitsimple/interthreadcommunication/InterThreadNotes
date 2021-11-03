@@ -1,0 +1,140 @@
+// InterThread communication 
+-----------------------------------------
+# In java we use wait, notify and notifyAll methods for Inter-thread communication 
+# Analogy by Durga sir : 
+1. A is Waiting for a letter from B But C is the post master here --> "A" keeps on checking the "post box" attached with the home gate, for a letter every after 30 mins 
+2. Letter Arrived in the mng --> but the subsequent checks that made at night have gone waste 
+3. for this reason, next time "A" attaches a sticker saying that whenever post master ("C"), comes to update the post box he should call the person "A"
+4. After this, Next time when the same scenario comes in Person "A" can sleep peacefully without checking the post box all the time, because he is sure that 
+if there is a letter for him then "C" will call him
+5. This mitigates the issue of subsequent checks that are of no use 
+
+This anology can be compared with java now, 
+Person Waiting for update --> "A" --> Thread A
+Person responsible for update --> "C" ---> Thread C
+Post box --> Object whoose lock is required
+
+2 Important conclusions 
+----------------------------------
+# Thread which is waiting for the update should call wait method on the object (post box object in our case)
+# Thread which is responsible for the update should call notify method once it completes the update on postbox 
+
+Important condition to call these methods 
+-------------------------------------------
+# If a thread wants to call wait or notify or notifyAll methods on an Object, then the thread should be the owner of the object
+# Here if Thread A wants to call wait on postbox object, then Thread A must be the owner of the object 
+# By words owner of the object mean --> Thread A must have the lock of post box object in order to call these methods on post box object
+# When does a thread will have a lock of the object ? ---> Generally when Thread is in synchronized area it will have a lock of that object, because synchronization is the 
+mechanism that implies these locking statergies on the object 
+
+3rd Conclusion
+---------------------
+# Conclusion from the above conditions : A thread can call these methods only when the thread owns a lock of that object, to own a lock 
+we must be in a synchronized area, so these methods can only be called from the synchronized area
+
+# If we call these methods from the non-sync area then we will get "IllegalMonitorStateException"
+
+4th Conclusion 
+-----------------------
+1. When a thread will call wait method on an object, then the thread will release the lock of that perticular object immediately :
+means Thread can own 10 locks but it will release only that perticular lock which is associated with that object immediately
+2. ex. When Thread A calls wait method on postbox object, then it will release the lock of that postbox object
+3. When a thread will call notify method on an object then the thread willl release the lock of that perticular object but may not be immediately
+means : there are two possibilities
+
+ Thread can notify first and then update and realease the lock
+ Thread can upadte first and then notify and release the lock 
+ Just like post man can give a call to person A or Thread A even before he puts the letter in the box, but postman will only release the lock 
+ only after he successfully puts the letter inside the postbox, so Thread calling notify may not release the lock immediately
+ 
+ 5th Conclusion 
+ ----------------------
+ Why wait, notify and notifyAll methods are present in Object class but not in Thread class ?
+ 
+ The reason is that a Thread can call wait, notify and notifyAll methods on any object not only on thread type of objects
+ ex. A thread will call start method only on Thread type of object --> so start method is present in  Thread class
+ lly sleep method also present in Thread class
+ but A thread can all wait notify and notifyAll methods on any object (class need not to be a thread class or child class of thread), this is the reason they are kept on 
+object class not on the thread class
+
+6th Conclusion 
+--------------------------
+wait, notify and notifyAll are the only three methods --> when thread calls these three methods they release the lock of the object, not other methods like sleep, start, join etc
+
+Thread life cycle
+---------------------
+
+1. when the object of the thread created ---> it will be in new state or born state
+2. when you call start method ---> thread will go from new state to ready state or runnable state
+3. when thread schedular allocates cpu to the thread --> it goes to running state 
+4. when the job of the thread (run method execution) is completed --> the thread goes to dead state
+
+5. When a thread calls wait method on an object like obj.wait() --> it goes to waiting state
+6. from waiting state thread will go to another waiting state when --> a. it gets notification b. waiting time expired c. waiting thread is being interrupted
+7. From this 2nd waiting state the thread will go to ready / runnable state only when the thread aquires a lock
+
+so there are 6/7 states of thread --> born --> ready --> running ---> dead --> waiting --> another waiting --> ready 
+
+7th conclusion 
+----------------
+Lets say Thread A is waiting for the update on post box object and Thread B is resposible for the updation of the postbox object, in that case
+lets assume Thread A goes for sleeping 10 secs, but in the meantime when Thread A  is sleeping Thread B finishes the updation and calls notify method, and after 10 secs Thread A is calling wait method now
+in this case the Thread A will be keep on waiting for ever 
+
+keeping it simple : when Thread A calls by the time Thread B already notified, it's not going to notify again so Thread A will keep on waitng for notification for ever, 
+to avoid these things only wait method overloaded with the time, like wait(ms), wait (ms, ns), you can use these overloaded methods to avoid such situations
+
+8th Conclusion
+-------------------------
+
+
+Lets say There are 100 threads that are in waiting state now, by calling wait methods as shown below 
+
+obj.wait() --> 60 threads called this and went to waiting state
+obj1.wait() --> 40 threads called this and went to waiting state 
+
+
+1.
+now when a thread calls notify method (obj.wait()) then it will notify any one thread among these 60 threads not to all threads
+but there is no such way to notify a perticular thread, so when a thread calls notify it just sends a notification to any one waiting thread but which thread it sends notification
+is not in our hand it depends on the jvm, and one more imp thing is that here the thread calling wait will only release the lock of obj not other locks
+
+2. 
+When a thread calls notifyAll method (obj.wait()) then it will notify all the waiting threads of obj object, means all the 60 waiting threads will get notification, so all these 60 threads will go to second waiting state, 
+and any one thread will go to ready state at a time (ie. the thread that aquires a lock is the only thread that goes to ready state now), and one more imp thing is that the thread calling notifyAll method will only release the lock of obj not other locks
+
+9th Conclusion 
+----------------------------------------
+Producer-Consumer problem is solved by using, wait(), notify() and notifyAll() methods
+
+Producer -> has to call notify() or notifyAll() methods once the elements produced in the queue
+Consumer --> has to call wait() method if the queue is empty
+
+for more info please check the notes  
+
+10th Conclusion 
+--------------------------
+Can we use sleep or join method instead of making use of wait, notify and notifyAll
+1. No we can't use, 
+As a jugad you can do that but it's never recommended to do that, 
+when you use, sleep(n) method --> Thread sleeps for n amount of time, but we cant be sure that the updation by the other thread will finishup within n time, if it finishes within n time 
+there is a buffer time that is simply wasted without even using any of the system resource
+if we use join method --> then again the thread which is waiting for update has to wait till the other thread completely finishes its job, but there might be some cases where the thread which updates the resource 
+will give the notification in between also, means even though there are 1000 lines in run method, by using notify method the thread which is resposible for update can notify the thread which is waiting for update in 10th line also ..
+
+so Avoid using sleep method insted of using wait, notify and notifyAll --> because it does not guarantee, the dataconsistency 
+Avoid using join method --> because using wait,notify and notifyAll method over join will have a performance advantage
+
+ IMP NOTE : When there is a concept of shared resource, ie. if one thread is waiting for the update over an object and other thread is responsible for the update then only the concept of wait, notify and notifyAll will comes into picture 
+ 
+ Note : 1. Go through the example of race condition where there is a data inconsistency -> which is without using wait, notify, notifyAll
+
+11th example 
+--------------------------
+# What happens when thread waiting for the update calls wait but thread responsible for the update does not call notify ?
+
+# to answer this question we need to understand how to awake the thread which is sleeping, 
+We can only woke up the thread which is waiting for updation by giving the notification after it enters into waiting state (any notification before the waiting state are ignored),
+but notifying this thread which is waiting for updation can be done in two ways
+1. explicit notification --> by calling either notify or notifyAll method 
+2. implicit notification --> here we will not call these methods, but jvm call these methods just before the thread which is resposible for updation dies.
